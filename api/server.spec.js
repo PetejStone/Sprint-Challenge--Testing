@@ -10,6 +10,13 @@ describe('server connection', () => {
         .get('/')
         .expect(200)
 
-
     })
+
+    ////UNCOMMENT and add typo to server GET code to check for this error ///////
+    // it('should return status 500 error if server code is wrong', () => {
+    //     return supertest(server)
+    //     .get('/')
+    //     .expect(500)
+
+    // })
 })
