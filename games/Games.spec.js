@@ -27,11 +27,13 @@ describe('GET of game', () => {
 
 })
 
+//testing for inserting game
 describe('Inserting game', () => {
     beforeEach(async ()=> {
         await db('games').truncate()
     })
 
+    //checks length
     it('should add game', async () => {
         await insert({title: 'Halo', genre: 'action'})
         await insert({title: 'NBA 2k', genre: 'sports'})
@@ -39,13 +41,14 @@ describe('Inserting game', () => {
         expect(games).toHaveLength(2)
     })
 
+  
+
      // //testing actual content that is returned (empty array for now)
      it('should return 422', async () => {
         return supertest(server)
-        //returns status 422 if any info is incomplete
+        //returns status 422 if any info is incomplete (if title or genre is missing)
         .post('/games')
         .expect(422)
         
     })
-
 })
