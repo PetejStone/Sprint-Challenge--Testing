@@ -19,11 +19,32 @@ describe('server connection', () => {
         .expect(200, done)
     })
 
-    ////UNCOMMENT and add typo to server GET code to check for this error ///////
-    // it('should return status 500 error if server code is wrong', () => {
-    //     return supertest(server)
-    //     .get('/')
-    //     .expect(500)
+    //testing actual content that is returned
+    it('should return {api: working}', () => {
+        supertest(server)
+        .get('/')
+        .then(res => {
+            expect(res.body).toEqual({api: 'working'})
+        })
+        
+    })
 
-    // })
+      //async  and await testing for json response
+      it('should return 200', async () => {
+        await supertest(server)
+        .get('/')
+        .expect('Content-Type', /json/i) //expect the content type to be json format
+    })
+
+    // ////UNCOMMENT and add typo to server GET code to check for this error ///////
+    // it('should return {api: working}', () => {
+    //     supertest(server)
+    //     .get('/')
+    //     .then(res => {
+    //         expect(200)
+    //     })
+    //     .catch( err => {
+    //         expect(500)
+    //     })
+   // })
 })

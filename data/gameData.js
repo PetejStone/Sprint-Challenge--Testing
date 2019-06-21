@@ -1,3 +1,6 @@
-export default gameData = [
-    
+
+module.exports =  [
+    {
+        title: 'pacman'
+    }
 ]
