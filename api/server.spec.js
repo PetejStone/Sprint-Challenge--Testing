@@ -5,7 +5,7 @@ const supertest = require('supertest');
 const server = require('./server.js');
 
 describe('server connection', () => {
-    it('should return status 200 OK', () => {
+    it('should return status 200 OK', () => { //status of 200 for server request test
         return supertest(server)
         .get('/')
         .expect(200)

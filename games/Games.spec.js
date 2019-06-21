@@ -10,7 +10,7 @@ describe('GET of game', () => {
     //     await db.truncate()
     // })
 
-    it('should return status 200', () => {
+    it('should return status 200', () => { //returns status of 200 when success
         return supertest(server)
         .get('/games')
         .expect(200)
@@ -29,7 +29,7 @@ describe('GET of game', () => {
 
 //testing for inserting game
 describe('Inserting game', () => {
-    beforeEach(async ()=> {
+    beforeEach(async ()=> { //resets data base after each test
         await db('games').truncate()
     })
 
@@ -43,7 +43,7 @@ describe('Inserting game', () => {
 
   
 
-     // //testing actual content that is returned (empty array for now)
+     //testing for error code 422
      it('should return 422', async () => {
         return supertest(server)
         //returns status 422 if any info is incomplete (if title or genre is missing)
