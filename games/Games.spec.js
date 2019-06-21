@@ -28,9 +28,15 @@ describe('GET of game', () => {
 })
 
 describe('Inserting game', () => {
-    // beforeEach(async ()=> {
-    //     await db.truncate()
-    // })
+    beforeEach(async ()=> {
+        await db('games').truncate()
+    })
 
-    
+    it('should add game', async () => {
+        await insert({title: 'Halo', genre: 'action'})
+        await insert({title: 'NBA 2k', genre: 'sports'})
+        const games = await db('games')
+        expect(games).toHaveLength(2)
+    })
+
 })
