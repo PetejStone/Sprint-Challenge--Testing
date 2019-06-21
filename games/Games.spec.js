@@ -39,4 +39,13 @@ describe('Inserting game', () => {
         expect(games).toHaveLength(2)
     })
 
+     // //testing actual content that is returned (empty array for now)
+     it('should return 422', async () => {
+        return supertest(server)
+        //returns status 422 if any info is incomplete
+        .post('/games')
+        .expect(422)
+        
+    })
+
 })
